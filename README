@@ -1,0 +1,3 @@
+This is a partial submission encompassing the core routines of the codebase, which are enough to have a minimally working listener and connector. I still need to organize the code for the modules and protocol framework. This will be done by the evening. The entire codebase, including unit tests, is around 4,000 lines. On the other hand, Bitcoin Core is around 60,000 lines, but that includes GUI code based on the Qt toolkit, and not the core engine alone.
+
+I haven't yet gotten word of the license which Chen Rong has desired for this codebase. I recommend that the initial versions of some of the utility functions be released under weak libre such as BSD License or Unlicense rather than strong libre such as GPL. It doesn't matter much either way, though.
