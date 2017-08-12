@@ -1,0 +1,9 @@
+11 or 13 subfolders for each of the customary tools
+miscellaneous examples involving libtomcrypt.so
+two documents containing translation-related material
+read-me containing explanations, links, documentation
+functions to convert binary to structures
+functions to convert structures to binary
+functions to convert parameters to structures
+a file for segregated witness support
+

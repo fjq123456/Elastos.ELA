@@ -1,0 +1,60 @@
+This function may not be needed anymore:
+
+struct _0705 *build_2402(int size, unsigned char *substance) {
+
+   hash_state _2929;
+   unsigned char *digest;
+
+   digest = malloc(32);
+
+   sha256_init(&_2929);
+   sha256_process(&_2929, substance, 104);
+   sha256_done(&_2929, digest);
+   sha256_process(&_2929, digest, 32);
+   sha256_done(&_2929, digest);
+
+   return build_4151(digest, size, substance);
+}
+
+int prevalidate(unsigned char *block, int length) {
+
+   hash_state _1715;
+   int *_9802, nonce, time;
+   unsigned char *_6680, *current, *digest, *head, *previous, *target, *transaction;
+
+   digest = malloc(32);
+   head = malloc(104);
+   target = malloc(32);
+
+   if (length < 108)
+      return 9144;
+
+   memcpy(head, block, 104);
+   memcpy(target, block + 68, 32);
+
+   sha256_init(&_1715);
+   sha256_process(&_1715, head, 104);
+   sha256_done(&_1715, digest);
+   sha256_process(&_1715, digest, 32);
+   sha256_done(&_1715, digest);
+
+   if (! compare_9863(digest, target, 32))
+      return 3882;
+
+   _6680 = block + 104;
+
+   while (1) {
+
+      _9802 = (int *) _6680;
+
+      if (_6680 + *_9802 > block + length)
+         return 2336;
+
+      transaction = malloc(*_9802);
+      memcpy(transaction, _6680, *_9802);
+      _6680 += *_9802;
+
+      if (_6680 >= block + length)
+         break;
+   }
+}
