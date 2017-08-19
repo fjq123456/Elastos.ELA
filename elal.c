@@ -1,42 +1,3 @@
-/* Elastos Coin */
-
-/* This file was written in 2017 by Yuan Xun. */
-
-/* The license for this file has not yet been determined.
-   Yuan Xun is hoping that some of these component files
-   may be dual-licensed under the GPL and the Unlicense.
-   Whereas the GPL is a strong libre license, the
-   Unlicense is a weak libre license. This does not have
-   to be a permanent arrangement. Mr Yuan would be
-   contented if this happened only for the first one or
-   two prereleases of Elastos Coin. That way, any useful
-   subroutines of a customary nature contained within the
-   codebase may be utilized by those who have possible
-   disagreements with the GPL. */
-
-/* The text of the Unlicense (without the second
-   paragraph, which may not be necessary) is as follows: */
-
-/* This is free and unencumbered software released into
-   the public domain. Anyone is free to copy, modify,
-   publish, use, compile, sell, or distribute this
-   software, either in source code form or as a compiled
-   binary, for any purpose, commercial or non-commercial,
-   and by any means. In jurisdictions that recognize
-   copyright laws, the author or authors of this software
-   dedicate any and all copyright interest in the
-   software to the public domain. We make this dedication
-   for the benefit of the public at large and to the
-   detriment of our heirs and successors. We intend this
-   dedication to be an overt act of relinquishment in
-   perpetuity of all present and future rights to this
-   software under copyright law. */
-
-/* The text of the GPL (the second version) is as
-   follows: */
-
-/* The text of the GPL (the third version) is as follows: */
-
 #define TFM_DESC
 
 #include "arpa/inet.h"
@@ -54,7 +15,7 @@
 #include "time.h"
 #include "sys/time.h"
 
-#include "common.h"
+#include "assorted.h"
 #include "format.h"
 #include "storage.h"
 
@@ -133,7 +94,7 @@ struct _2261 *handle(struct _2261 *state, unsigned char input, unsigned char **o
 
       if (input == 97) {
 
-         return (struct _2261 *) build_7807(0, 0);
+         
       }
 
       if (input == 98) {
@@ -247,7 +208,22 @@ void _start_4858() {
    _exit(0);
 }
 
-void _start() {
+unsigned char *create_3344(int *length) {
+
+   ecc_key _5560;
+   int _2935;
+   prng_state _2821;
+   unsigned char *_0163;
+
+   _0163 = malloc(_2935 = 1000);
+   ecc_make_key(&_2821, find_prng("sprng"), 32, &_5560);
+   ecc_export(_0163, &_2935, 1, &_5560);
+   *length = _2935;
+
+   return _0163;
+}
+
+void _start_3988() {
 
    ecc_key key;
    prng_state _0913;
@@ -262,23 +238,15 @@ void _start() {
    int _f765, _1124, _7226;
    unsigned char output[1024];
 
-   int _0206;
+   int length;
+   unsigned char *buffer;
 
-   ecc_make_key(&_0913, find_prng("sprng"), 32, &key);
-   _1124 = 1024;
-   ecc_export(output, &_1124, 1, &key);
-
-   for (_0206 = 0; _0206 < 32; _0206++)
-      { printf("%02x", output[_0206]); }
-   printf("%c", 10);
-
-   ecc_make_key(&_0913, find_prng("sprng"), 32, &key);
-   _1124 = 1024;
-   ecc_export(output, &_1124, 1, &key);
-
-   for (_0206 = 0; _0206 < 32; _0206++)
-      { printf("%02x", output[_0206]); }
-   printf("%c", 10);
+   buffer = create_3344(&length);
+   printf("%d%c", length, 10);
+   buffer = create_3344(&length);
+   printf("%d%c", length, 10);
+   buffer = create_3344(&length);
+   printf("%d%c", length, 10);
 
    _start_4858();
    _exit(0);

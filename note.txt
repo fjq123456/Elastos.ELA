@@ -1,4 +1,26 @@
-This function may not be needed anymore:
+
+// pascal style string
+// 4 bytes indicating length followed by
+
+unsigned char *copy_2705();
+
+struct _2458 {
+
+   void *current;
+   void *nonce;
+   void *previous;
+   void *target;
+   void *time;
+};
+
+
+
+The functions for "sha256" a hash state and output.
+
+Head and body should be parsed separately.
+Head should yield only so much. Body should yield only so much.
+A list of transactions.
+For every transaction, a list of inputs and a list of outputs.
 
 struct _0705 *build_2402(int size, unsigned char *substance) {
 

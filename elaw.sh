@@ -6,6 +6,7 @@ F90C=$COMPONENTS/libtfm.a
 F03C=$COMPONENTS/libc.a
 B502=$COMPONENTS/libgcc.a
 
-tcc -c elac.c -o /tmp/$TIME.o &&
-tcc -static -o /tmp/$TIME /tmp/$TIME.o $E3DE $F90C $F03C $B502 &&
-/tmp/$TIME $1 $2
+tcc -c elaw.c -o /tmp/$TIME.o &&
+tcc -o /tmp/$TIME /tmp/$TIME.o $E3DE $F90C $F03C $B502 &&
+# tcc -o /tmp/$TIME /tmp/$TIME.o $E3DE $F90C &&
+/tmp/$TIME $1
